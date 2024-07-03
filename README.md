@@ -1,4 +1,4 @@
-Dataset of python solutions of riddles from ARC-AGI dataset
+Dataset of python solutions of riddles from [ARC-AGI dataset](https://github.com/fchollet/ARC-AGI).
 
 Status:
 - Training 11/400
