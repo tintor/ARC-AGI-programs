@@ -7,7 +7,7 @@ Status:
 - Evaluation 0/400
 
 Example solution:
-```
+```python
 import numpy as np
 def run(a: np.ndarray):
     h, w = a.shape
