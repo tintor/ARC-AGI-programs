@@ -21,4 +21,4 @@ def run(a: np.ndarray):
 ```
 
 Notes:
-train/9aec4887.json: all training examples modify only pixels near the edge, but test example also modifies pixesl away from edge
+`train/9aec4887.json`: all training examples modify only pixels near the edge, but test example also modifies pixesl away from edge
