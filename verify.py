@@ -146,7 +146,7 @@ if __name__ == "__main__":
             print()
         for a, b in test:
             print("Test")
-            print_grid(a)
+            print_grids(a, b)
             print()
         score = evaluate(train + test, program, True)
         print("Score {}".format(score))    

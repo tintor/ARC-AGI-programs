@@ -3,7 +3,7 @@ Dataset of python solutions of riddles from [ARC-AGI dataset](https://github.com
 Each solution is a standalone python library containing `def run(a: np.ndarray) -> np.ndarray:` function.
 
 Status:
-- Training 11/400
+- Training 12/400
 - Evaluation 0/400
 
 Example solution:
@@ -19,3 +19,6 @@ def run(a: np.ndarray):
                 b[y*4:y*4+4, x*4:x*4+4] = np.max(p)
     return b
 ```
+
+Notes:
+train/9aec4887.json: all training examples modify only pixels near the edge, but test example also modifies pixesl away from edge
