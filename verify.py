@@ -132,17 +132,13 @@ def evaluate(pairs: list[ndarray, ndarray], program: str, debug: bool = False) -
     return solved / total
 
 
-target = None
-
 if __name__ == "__main__":
-    programs = []
-    for name in os.listdir("train"):
-        filepath = os.path.join("train", name)
-        if os.path.isfile(filepath) and filepath.endswith('.py'):
-            with open(filepath, "r") as f:
-                programs.append(f.read())
+    if len(sys.argv) == 2:
+        target = sys.argv[1]
+        filepath = os.path.join("train", target + ".py")
+        with open(filepath, "r") as f:
+            program = f.read()
 
-    if target is not None:
         train, test = load_problem(target)
         for a, b in train:
             print("Train")
@@ -152,9 +148,16 @@ if __name__ == "__main__":
             print("Test")
             print_grid(a)
             print()
-        score = evaluate(train + test, CODES[-1])
+        score = evaluate(train + test, program, True)
         print("Score {}".format(score))    
         sys.exit(0)
+
+    programs = []
+    for name in os.listdir("train"):
+        filepath = os.path.join("train", name)
+        if os.path.isfile(filepath) and filepath.endswith('.py'):
+            with open(filepath, "r") as f:
+                programs.append(f.read())
 
     solved = 0
     total = 0
