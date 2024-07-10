@@ -1,4 +1,4 @@
-Dataset of python solutions of riddles from [ARC-AGI dataset](https://github.com/fchollet/ARC-AGI).
+Dataset of python solutions for riddles from [ARC-AGI dataset](https://github.com/fchollet/ARC-AGI).
 
 Each solution is a standalone python library containing `def run(a: np.ndarray) -> np.ndarray:` function.
 
