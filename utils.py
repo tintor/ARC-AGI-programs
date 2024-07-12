@@ -21,8 +21,6 @@ def run_code_and_verify(code: str, in_matrix: ndarray, out: list[str] | None) ->
         return "Your output must be a 2d matrix of type ndarray."
     if np.any(result < 0) or np.any(result > 9):
         return "Your output matrix contains numbers out of [0, 9] range."
-    if np.array_equal(result, in_matrix):
-        return "Your output matrix is identical to input matrix. No output will be equal to input in any example."
     return result
 
 
