@@ -9,11 +9,11 @@ class int2:
     def __init__(self, y: int, x: int) -> None:
         self.x = x
         self.y = y
-    def __add__(self, o) -> int2:
+    def __add__(self, o) -> 'int2':
         return int2(self.x + o.x, self.y + o.y)
-    def __sub__(self, o) -> int2:
+    def __sub__(self, o) -> 'int2':
         return int2(self.x - o.x, self.y - o.y)
-    def __neg__(self) -> int2:
+    def __neg__(self) -> 'int2':
         return int2(-self.x, -self.y)
     def tuple(self) -> tuple[int, int]:
         return (self.y, self.x)
@@ -38,7 +38,7 @@ def vmin(a: int2, b: int2) -> int2:
 def vmax(a: int2, b: int2) -> int2:
     return int2(max(a.y, b.y), max(a.x, b.x))
 
-X = int2(x=1, y=1)
+X = int2(x=1, y=0)
 Y = int2(x=0, y=1)
 
 def all_monocolor_shapes(a: np.ndarray) -> list[tuple[int, int2, int2, list[int2]]]:

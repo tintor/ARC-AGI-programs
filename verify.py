@@ -20,42 +20,21 @@ color_codes = {
     'reset': '\033[0m'  # Reset to default
 }
 
-def print_grid(matrix: ndarray):
-    for row in matrix:
-        for element in row:
-            color_code = color_codes.get(element, color_codes['reset'])
-            print(f"{color_code}{element}", end=' ')
-        print(color_codes['reset'])  # Reset color and move to the next line
+def print_grid(*grids: ndarray):
+    height = max(e.shape[0] for e in grids)
+    for y in range(height):
+        for i, a in enumerate(grids):
+            for x in range(a.shape[1]):
+                if y < a.shape[0]:
+                    e = a[y, x]
+                    color = color_codes.get(e, color_codes['reset'])
+                    print(f"{color}{e}", end=' ')
+                else:
+                    print('  ')
 
-
-def print_grids(a: ndarray, b: ndarray):
-    ah, aw = a.shape
-    bh, bw = b.shape
-    separator = '   '
-    for y in range(min(ah, bh)):
-        for x in range(aw):
-            e = a[y, x]
-            color = color_codes.get(e, color_codes['reset'])
-            print(f"{color}{e}", end=' ')
-        print(separator, end='')
-
-        for x in range(bw):
-            e = b[y, x]
-            color = color_codes.get(e, color_codes['reset'])
-            print(f"{color}{e}", end=' ')
+            if i + 1 != len(grids):
+                print('  ', end='')
         print(color_codes['reset'])
-
-    for y in range(bh, ah):
-        for x in range(aw):
-            e = a[y, x]
-            color = color_codes.get(e, color_codes['reset'])
-            print(f"{color}{e}", end=' ')
-        print(color_codes['reset'])
-
-    for y in range(ah, bh):
-        for x in range(aw):
-            print('  ', end='')
-        print(separator, end='')
 
 
 def list_problems(path: str) -> list[str]:
@@ -123,12 +102,17 @@ def evaluate(pairs: list[ndarray, ndarray], program: str, debug: bool = False) -
             solved += 1
         if debug:
             if isinstance(c, str):
+                print_grid(a, b)
                 print(f"Failed: {c}")
             elif np.array_equal(b, c):
+                print_grid(a, b)
                 print("Passed")
             else:
+                print_grid(a, b, c)
                 print("Failed")
-                print_grid(c)
+        else:
+            print_grid(a, b)
+            print()
     return solved / total
 
 
@@ -140,14 +124,6 @@ if __name__ == "__main__":
             program = f.read()
 
         train, test = load_problem(target)
-        for a, b in train:
-            print("Train")
-            print_grids(a, b)
-            print()
-        for a, b in test:
-            print("Test")
-            print_grids(a, b)
-            print()
         score = evaluate(train + test, program, True)
         print("Score {}".format(score))    
         sys.exit(0)
@@ -175,7 +151,7 @@ if __name__ == "__main__":
         print("Score {}".format(score))
         for a, b in train:
             print("Train")
-            print_grids(a, b)
+            print_grid(a, b)
             print()
         for a, b in test:
             print("Test")
