@@ -28,9 +28,9 @@ def print_grid(*grids: ndarray):
                 if y < a.shape[0]:
                     e = a[y, x]
                     color = color_codes.get(e, color_codes['reset'])
-                    print(f"{color}{e}", end=' ')
+                    print(f"{color}{e} ", end='')
                 else:
-                    print('  ')
+                    print('  ', end='')
 
             if i + 1 != len(grids):
                 print('  ', end='')
@@ -110,9 +110,6 @@ def evaluate(pairs: list[ndarray, ndarray], program: str, debug: bool = False) -
             else:
                 print_grid(a, b, c)
                 print("Failed")
-        else:
-            print_grid(a, b)
-            print()
     return solved / total
 
 
