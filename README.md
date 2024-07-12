@@ -3,7 +3,7 @@ Dataset of python solutions for riddles from [ARC-AGI dataset](https://github.co
 Each solution is a standalone python library containing `def run(a: np.ndarray) -> np.ndarray:` function.
 
 Status:
-- Training 17/400
+- Training 18/400
 - Evaluation 0/400
 
 Example solution:
