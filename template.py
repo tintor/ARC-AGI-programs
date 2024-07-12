@@ -13,6 +13,8 @@ class int2:
         return int2(self.x + o.x, self.y + o.y)
     def __sub__(self, o) -> int2:
         return int2(self.x - o.x, self.y - o.y)
+    def __neg__(self) -> int2:
+        return int2(-self.x, -self.y)
     def tuple(self) -> tuple[int, int]:
         return (self.y, self.x)
     def __iter__(self) -> Generator[int, None, None]:
